@@ -18,10 +18,12 @@ public class ArmMove : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+    void Update()
+    {
         float mouseDelta = -Input.GetAxis("Mouse X");
         mouseDelta = Mathf.Min(Mathf.Abs(mouseDelta), 1) * Mathf.Sign(mouseDelta);
-        transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(new Vector3(0, 0, mouseDelta * rotateScale)), 0.1f);
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(new Vector3(0, -mouseDelta * rotateScale * 2, 0)), 0.05f);
+        transform.localRotation = Quaternion.Slerp(transform.localRotation, Quaternion.Euler(new Vector3(0, 0, mouseDelta * rotateScale * 2)), 0.1f);
 
         mouseDelta = -Input.GetAxis("Mouse Y");
         mouseDelta = Mathf.Min(Mathf.Abs(mouseDelta), 1) * Mathf.Sign(mouseDelta);
